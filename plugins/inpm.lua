@@ -78,6 +78,10 @@ end
 
 return {
     patterns = {
+      "^(chats)$",
+      "^(chatlist)$",
+      "^(join) (.*)$",
+      "^(kickme) (.*)$",
       "^[/!](chats)$",
       "^[/!](chatlist)$",
       "^[/!](join) (.*)$",
