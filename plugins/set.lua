@@ -25,6 +25,7 @@ end
 
 return {
   patterns = {
+   "^save ([^%s]+) (.+)$"
    "^[!/]save ([^%s]+) (.+)$"
   }, 
   run = run 
