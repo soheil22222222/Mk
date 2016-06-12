@@ -598,7 +598,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup settings:\nLockReply: "..settings.reply.."\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.stricts.."\nGroupID: "..msg.to.id
+  local text = "SuperGroup settings:\nLockReply: "..settings.reply.."\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.stricts
   return text
 end
 
@@ -1301,7 +1301,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "✏نام سوپرگروه: " ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n👥ایدی سوپرگروه: "..msg.to.id.."\n\n👤ایدی کاربری: "..msg.from.id.."\n\n👤نام کامل: "..msg.from.print_name.."\n\n👤یوزرنیم: @"..msg.from.username.."\n\n👤شمارتلفن: +"..msg.from.phone
+				return "✏نام سوپرگروه: " ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n👥ایدی سوپرگروه: "..msg.to.id.."\n\n👤ایدی کاربری: "..msg.from.id.."\n\n👤نام کامل: "..msg.from.print_name.."\n\n👤یوزرنیم: @"..msg.from.username.."👤پیام شما: "..msg.text
 			end
 		end
 
