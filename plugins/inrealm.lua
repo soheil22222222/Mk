@@ -658,6 +658,26 @@ end
 
 return {
   patterns = {
+    "^(creategroup) (.*)$",
+    "^(createrealm) (.*)$",
+    "^(setabout) (%d+) (.*)$",
+    "^(setrules) (%d+) (.*)$",
+    "^(setname) (.*)$",
+    "^(setgpname) (%d+) (.*)$",
+    "^(setname) (%d+) (.*)$",
+    "^(lock) (%d+) (.*)$",
+    "^(unlock) (%d+) (.*)$",
+    "^(setting) (%d+)$",
+    "^(wholist)$",
+    "^(who)$",
+    "^(type)$",
+    "^(kill) (chat) (%d+)$",
+    "^(kill) (realm) (%d+)$",
+    "^(addadmin) (.*)$", -- sudoers only
+    "^(removeadmin) (.*)$", -- sudoers only
+    "^(list) (.*)$",
+    "^(log)$",
+    "^(help)$",
     "^[!/](creategroup) (.*)$",
     "^[!/](createrealm) (.*)$",
     "^[!/](setabout) (%d+) (.*)$",
@@ -665,12 +685,12 @@ return {
     "^[!/](setname) (.*)$",
     "^[!/](setgpname) (%d+) (.*)$",
     "^[!/](setname) (%d+) (.*)$",
-        "^[!/](lock) (%d+) (.*)$",
+    "^[!/](lock) (%d+) (.*)$",
     "^[!/](unlock) (%d+) (.*)$",
     "^[!/](setting) (%d+)$",
-        "^[!/](wholist)$",
-        "^[!/](who)$",
-        "^[!/](type)$",
+    "^[!/](wholist)$",
+    "^[!/](who)$",
+    "^[!/](type)$",
     "^[!/](kill) (chat) (%d+)$",
     "^[!/](kill) (realm) (%d+)$",
     "^[!/](addadmin) (.*)$", -- sudoers only
