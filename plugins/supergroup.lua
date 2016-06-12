@@ -114,15 +114,15 @@ end
 
 --Get and output info about supergroup
 local function callback_info(cb_extra, success, result)
-local title ="Info for SuperGroup: ["..result.title.."]\n\n"
-local admin_num = "Admin count: "..result.admins_count.."\n"
-local user_num = "User count: "..result.participants_count.."\n"
-local kicked_num = "Kicked user count: "..result.kicked_count.."\n"
-local channel_id = "ID: "..result.peer_id.."\n"
+local title ="📝مشخصات سوپرگروه: ["..result.title.."]\n\n"
+local admin_num = "👥تعدادادمین: "..result.admins_count.."\n"
+local user_num = "👥تعدادیوزرنیم: "..result.participants_count.."\n"
+local kicked_num = "👥تعدادافرادریمو شده: "..result.kicked_count.."\n"
+local channel_id = "👤ایدی: "..result.peer_id.."\n"
 if result.username then
 	channel_username = "Username: @"..result.username
 else
-	channel_username = ""
+	channel_username = "@Part_Team"
 end
 local text = title..admin_num..user_num..kicked_num..channel_id..channel_username
     send_large_msg(cb_extra.receiver, text)
@@ -1268,7 +1268,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "SuperGroup ID for " ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n"..msg.to.id
+				return "✏اسم سوپرگروه" ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n👥ایدی سوپرگروه: "..msg.to.id.."\n\n👤ایدی کاربری: "..msg.from.id.."\n\n👤نام کامل: "..msg.from.print_name.."\n\n👤یوزرنیم: @"..msg.from.username.."\n\n👤شمارتلفن: "..msg.from.phone
 			end
 		end
 
@@ -1299,7 +1299,7 @@ local function run(msg, matches)
 		if matches[1] == 'setlink' and is_owner(msg) then
 			data[tostring(msg.to.id)]['settings']['set_link'] = 'waiting'
 			save_data(_config.moderation.data, data)
-			return 'Please send the new group link now'
+			return 'لطفا لینک جدید ارسال کنید'
 		end
 
 		if msg.text then
