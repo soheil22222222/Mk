@@ -183,6 +183,8 @@ end
 end
 
 --Begin supergroup locks
+
+--Begin supergroup locks
 local function lock_group_links(msg, data, target)
   if not is_momod(msg) then
     return
@@ -1043,7 +1045,7 @@ function show_supergroup_settingsmod(msg, target)
   local gp_type = data[tostring(msg.to.id)]['group_type']
   
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup settings:Lock tag(#): "..settings.tag.."\nLock username(@): "..settings.username.."\nLock join: "..settings.join.."\nLock fwd: "..settings.fwd.."\nLock fosh: "..settings.fosh.."\nLock english: "..settings.english.."\nLock emoji: "..settings.emoji.."\nLock reply: "..settings.reply.."\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.stricts
+  local text = "تنظیمات سوپرگروه:⬇️\n\n🔧قفل لینک: "..settings.lock_link.."\n🔧قفل شماره: "..settings.lock_contacts.."\n🔧قفل فلود: "..settings.flood.."\n🔧حساسیت: "..NUM_MSG_MAX.."\n🔧قفل اسپم: "..settings.lock_spam.."\n🔧قفل عربی و فارسی: "..settings.lock_arabic.."\n🔧قفل اعضا: "..settings.lock_member.."\n🔧RTL قفل: "..settings.lock_rtl.."\n🔧Tgservice قفل: "..settings.lock_tgservice.."\n🔧قفل استیکر: "..settings.lock_sticker.."\n🔧قفل تگ(#): "..settings.tag.."\n🔧قفل اموجی: "..settings.emoji.."\n🔧قفل اموجی: "..settings.english.."\n🔧قفل فرواد: "..settings.fwd.."\n🔧قفل ریپلی: "..settings.reply.."\n🔧قفل جوین: "..settings.join.."\n🔧قفل یوزرنیم(@): "..settings.username.."\n🔧media قفل: "..settings.media.."\n🔧قفل فحش: "..settings.fosh.."\n🔧قفل لفت: "..settings.leave.."\n🔧قفل ربات: "..bots_protection.."\n🔧operatorقفل: "..settings.operator.."\n\n⚙تنظیمات اسان وشیرن:⬇️\n\n>سوئچ گروه: "..settings.etehad.."\n🔧قفل همه: "..settings.all.."\n\nℹ️درباره گروهℹ️:⬇️\n\n🎯نوع گروه: "..gp_type.."\n🎯حالت عمومی: "..settings.public.."\n🎯تنظیمات دقیق: "..settings.strict.."\n\n\n@part_Team"
   return text
 end
 
@@ -1746,7 +1748,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "✏نام سوپرگروه: " ..string.gsub(msg.to.print_name, "_", " ").. ":\n👥ایدی سوپرگروه: "..msg.to.id.."\n👤ایدی کاربری: "..msg.from.id.."\n👤نام کامل: "..msg.from.print_name.."\n👤یوزرنیم: @"..msg.from.username.."\n👤پیام شما: "..msg.text.."\n👤تعداد پیام های فرستاده شده: "..user.info.msg
+				return "✏نام سوپرگروه: " ..string.gsub(msg.to.print_name, "_", " ").. ":\n👥ایدی سوپرگروه: "..msg.to.id.."\n👤ایدی کاربری: "..msg.from.id.."\n👤نام کامل: "..msg.from.print_name.."\n👤یوزرنیم: @"..msg.from.username.."\n👤پیام شما: "..msg.text
 			end
 		end
 
