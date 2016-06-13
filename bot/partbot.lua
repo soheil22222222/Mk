@@ -232,6 +232,7 @@ function create_config( )
     "lock_username",
     "lock_tag",
     "rmsg"
+    "plugins",
     "arabic_lock",
     "set",
     "get",
