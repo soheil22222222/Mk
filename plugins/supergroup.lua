@@ -1504,7 +1504,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "✏نام سوپرگروه: " ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n👥ایدی سوپرگروه: "..msg.to.id.."\n\n👤ایدی کاربری: "..msg.from.id.."\n\n👤نام کامل: "..msg.from.print_name.."\n\n👤یوزرنیم: @"..msg.from.username.."👤پیام شما: "..msg.text
+				return "✏نام سوپرگروه: " ..string.gsub(msg.to.print_name, "_", " ").. ":\n👥ایدی سوپرگروه: "..msg.to.id.."\n👤ایدی کاربری: "..msg.from.id.."\n👤نام کامل: "..msg.from.print_name.."\n👤یوزرنیم: @"..msg.from.username.."\n👤پیام شما: "..msg.text.."\n👤تعداد پیام های فرستاده شده: "..user.info.msg
 			end
 		end
 
@@ -1555,7 +1555,7 @@ local function run(msg, matches)
 				return "Create a link using /newlink first!\n\nOr if I am not creator use /setlink to set your link"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "Group name:["..string.gsub(msg.to.print_name, "_", " ").."]\nGroup link:\n"..group_link
+			return "📝Group name:["..string.gsub(msg.to.print_name, "_", " ").."]\n👥Group link:\n"..group_link
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
