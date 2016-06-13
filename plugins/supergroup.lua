@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been added!'
+	  local text = 'supergroup add!'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been removed'
+	  local text = 'SuperGroup removed!'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -410,6 +410,30 @@ local function unlock_group_tgservice(msg, data, target)
   end
 end
 
+  local group_english_lock = data[tostring(target)]['settings']['english']
+  if group_english_lock == 'yes' then
+    return 'english posting is already locked'
+  else
+    data[tostring(target)]['settings']['english'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'english posting has been locked'
+  end
+end
+
+local function unlock_group_links(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_english_lock = data[tostring(target)]['settings']['english']
+  if group_english_lock == 'no' then
+    return 'english posting is not locked'
+  else
+    data[tostring(target)]['settings']['english'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'english posting has been unlocked'
+  end
+end
+
 local function lock_group_sticker(msg, data, target)
   if not is_momod(msg) then
     return
@@ -463,6 +487,150 @@ local function unlock_group_contacts(msg, data, target)
     data[tostring(target)]['settings']['lock_contacts'] = 'no'
     save_data(_config.moderation.data, data)
     return 'Contact posting has been unlocked'
+  end
+end
+
+  local group_emoji_lock = data[tostring(target)]['settings']['emoji']
+  if group_emoji_lock == 'yes' then
+    return 'emoji posting is already locked'
+  else
+    data[tostring(target)]['settings']['emoji'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'emoji posting has been locked'
+  end
+end
+
+local function unlock_group_emoji(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_emoji_lock = data[tostring(target)]['settings']['emoji']
+  if group_emoji_lock == 'no' then
+    return 'emoji posting is not locked'
+  else
+    data[tostring(target)]['settings']['emoji'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'emoji posting has been unlocked'
+  end
+end
+
+  local group_fosh_lock = data[tostring(target)]['settings']['fosh']
+  if group_fosh_lock == 'yes' then
+    return 'fosh posting is already locked'
+  else
+    data[tostring(target)]['settings']['fosh'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'fosh posting has been locked'
+  end
+end
+
+local function unlock_group_fosh(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_fosh_lock = data[tostring(target)]['settings']['fosh']
+  if group_link_lock == 'no' then
+    return 'fosh posting is not locked'
+  else
+    data[tostring(target)]['settings']['fosh'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'fosh posting has been unlocked'
+  end
+end
+
+  local group_fwd_lock = data[tostring(target)]['settings']['fwd']
+  if group_fwd_lock == 'yes' then
+    return 'fwd posting is already locked'
+  else
+    data[tostring(target)]['settings']['fwd'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'fwd posting has been locked'
+  end
+end
+
+local function unlock_group_fwd(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_fwd_lock = data[tostring(target)]['settings']['fwd']
+  if group_fwd_lock == 'no' then
+    return 'fwd posting is not locked'
+  else
+    data[tostring(target)]['settings']['fwd'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'fwd posting has been unlocked'
+  end
+end
+
+  local group_join_lock = data[tostring(target)]['settings']['join']
+  if group_join_lock == 'yes' then
+    return 'join posting is already locked'
+  else
+    data[tostring(target)]['settings']['join'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'join posting has been locked'
+  end
+end
+
+local function unlock_group_join(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_join_lock = data[tostring(target)]['settings']['join']
+  if group_join_lock == 'no' then
+    return 'join posting is not locked'
+  else
+    data[tostring(target)]['settings']['join'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'join posting has been unlocked'
+  end
+end
+
+  local group_username_lock = data[tostring(target)]['settings']['username']
+  if group_username_lock == 'yes' then
+    return 'username posting is already locked'
+  else
+    data[tostring(target)]['settings']['username'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'username posting has been locked'
+  end
+end
+
+local function unlock_group_username(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_link_lock = data[tostring(target)]['settings']['username']
+  if group_username_lock == 'no' then
+    return 'username posting is not locked'
+  else
+    data[tostring(target)]['settings']['username'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'username posting has been unlocked'
+  end
+end
+
+  local group_tag_lock = data[tostring(target)]['settings']['tag']
+  if group_tag_lock == 'yes' then
+    return 'tag posting is already locked'
+  else
+    data[tostring(target)]['settings']['tag'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'tag posting has been locked'
+  end
+end
+
+local function unlock_group_tag(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_tag_lock = data[tostring(target)]['settings']['tag']
+  if group_tag_lock == 'no' then
+    return 'tag posting is not locked'
+  else
+    data[tostring(target)]['settings']['tag'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'tag posting has been unlocked'
   end
 end
 
@@ -583,8 +751,43 @@ function show_supergroup_settingsmod(msg, target)
 		end
 	end
 	if data[tostring(target)]['settings'] then
+		if not data[tostring(target)]['settings']['emoji'] then
+			data[tostring(target)]['settings']['emoji'] = 'no'
+		end
+end
+	if data[tostring(target)]['settings'] then
+		if not data[tostring(target)]['settings']['english'] then
+			data[tostring(target)]['settings']['english'] = 'no'
+		end
+end
+	if data[tostring(target)]['settings'] then
 		if not data[tostring(target)]['settings']['lock_rtl'] then
 			data[tostring(target)]['settings']['lock_rtl'] = 'no'
+		end
+end
+	if data[tostring(target)]['settings'] then
+		if not data[tostring(target)]['settings']['fosh'] then
+			data[tostring(target)]['settings']['fosh'] = 'no'
+		end
+end
+	if data[tostring(target)]['settings'] then
+		if not data[tostring(target)]['settings']['tag'] then
+			data[tostring(target)]['settings']['tag'] = 'no'
+		end
+end
+	if data[tostring(target)]['settings'] then
+		if not data[tostring(target)]['settings']['fwd'] then
+			data[tostring(target)]['settings']['fwd'] = 'no'
+		end
+end
+	if data[tostring(target)]['settings'] then
+		if not data[tostring(target)]['settings']['join'] then
+			data[tostring(target)]['settings']['join'] = 'no'
+		end
+end
+	if data[tostring(target)]['settings'] then
+		if not data[tostring(target)]['settings']['username'] then
+			data[tostring(target)]['settings']['username'] = 'no'
 		end
 end
       if data[tostring(target)]['settings'] then
@@ -598,7 +801,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup settings:\nLockReply: "..settings.reply.."\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.stricts
+  local text = "SuperGroup settings:Lock tag(#): "..settings.tag.."\nLock username(@): "..settings.username.."\nLock join: "..settings.join.."\nLock fwd: "..settings.fwd.."\nLock fosh: "..settings.fosh.."\nLock english: "..settings.english.."\nLock emoji: "..settings.emoji.."\nLock reply: "..settings.reply.."\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.stricts
   return text
 end
 
