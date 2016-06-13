@@ -142,7 +142,6 @@ local function is_plugin_disabled_on_chat(plugin_name, receiver)
       if disabled_plugin == plugin_name and disabled then
         local warning = 'Plugin '..disabled_plugin..' is disabled on this chat'
         print(warning)
-        send_msg(receiver, warning, ok_cb, false)
         return true
       end
     end
@@ -212,7 +211,7 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-	"admin",
+    "admin",
     "onservice",
     "inrealm",
     "ingroup",
@@ -220,19 +219,7 @@ function create_config( )
     "banhammer",
     "stats",
     "anti_spam",
-    "owners",  
-    "filter",
-    "linkpv",
-    "lock_reply",
-    "lock_emoji",
-    "lock_english",
-    "lock_fosh",
-    "lock_fwd",
-    "lock_join",
-    "lock_username",
-    "lock_tag",
-    "rmsg"
-    "plugins",
+    "owners",
     "arabic_lock",
     "set",
     "get",
@@ -242,56 +229,28 @@ function create_config( )
     "leave_ban",
     "supergroup",
     "whitelist",
-    "msg_checks"
+    "msg_checks",
+    "plugins",
+    "addplugin",
+    "filter",
+    "linkpv",
+    "lock_emoji",
+    "lock_english",
+    "lock_fosh",
+    "lock_fwd",
+    "lock_join",
+    "lock_media",
+    "lock_operator",
+    "lock_username",
+    "lock_tag",
+    "lock_reply",
+    "rmsg",
     },
     sudo_users = {166053947},--Sudo users
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Teleseed v4
-An advanced administration bot based on TG-CLI written in Lua
-
-https://github.com/SEEDTEAM/TeleSeed
-
-Admins
-@iwals [Founder]
-@imandaneshi [Developer]
-@POTUS [Developer]
-@seyedan25 [Manager]
-@aRandomStranger [Admin]
-
-Special thanks to
-awkward_potato
-Siyanew
-topkecleon
-Vamptacus
-
-Our channels
-@teleseedch [English]
-@iranseed [persian]
-
-Our website 
-http://teleseed.seedteam.org/
+    about_text = [[
 ]],
     help_text_realm = [[
-"^([Ss]argardan)$" ρт:
-ion banall_by_reply(extra, success, result)
- if result.to.type == 'chat' or result.to.type == 'channel' then
-  local chat = 'chat#id'..result.to.peer_id
-  local channel = 'channel#id'..result.to.peer_id
-    if tonumber(result.from.peer_id) == tonumber(our_id) then -- Ignore bot
-  return
-    end
-    if is_admin2(result.from.peer_id) then -- Ignore admins
-  return
-    end
-  local name = user_print_name(result.from)
-  banall_user(result.from.peer_id)
-  chat_del_user(chat, 'user#id'..result.from.peer_id, ok_cb, false)
-  send_large_msg(chat, "User "..name.."["..result.from.peer_id.."] globally banned")
- else
-  return
-  end
-end
-end
 📥Realm Commands📤
 
 ︿﹀︿﹀︿﹀︿﹀︿﹀︿﹀
@@ -363,10 +322,9 @@ end
 
 ︿﹀︿﹀︿﹀︿﹀︿﹀︿﹀
 
-Channel: @part_Team
+
 ]],
     help_text = [[
-"^([Ss]argardan)$" ρт:
 English commands:
 
 ︽︾︽︾︽︾︽︾︽︾︽︾︽︾
@@ -474,16 +432,14 @@ Will return group ban list
 ☎️Send /share to get robot number
 ︿﹀︿﹀︿﹀︿﹀︿﹀︿﹀
 
-Channel: @part_Team
+@Part_Team
 ]],
 	help_text_super =[[
-"^([Ss]argardan)$" ρт:
-卐 sαʀɢαʀ∂αη 卐:
 SuperGroup Commands:
 
 ➖➖➖➖➖➖➖➖➖➖➖
 
-▫️ /info
+▫️ /gpinfo
 ▪️نمایش مشخصات گروه
 
 ▫️ /setadmins
@@ -501,7 +457,7 @@ SuperGroup Commands:
 ▫️ /who
 ▪️همه ی ایدی های موجود درچت روبهتون میده
 
-▫️ /kick 
+▫️ /Black 
 ▪️فرد از گروه حذف میشود
 
 ▫️ /ban
@@ -602,8 +558,7 @@ SuperGroup Commands:
 
 ➖➖➖➖➖➖➖➖➖➖➖
 میتوانید از دو کاراکتر'!'و'/'برای دادن دستورات استفاده کنید
-@part_Team
-
+@Part_Team
 ]],
   }
   serialize_to_file(config, './data/config.lua')
