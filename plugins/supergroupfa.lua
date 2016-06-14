@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been added!'
+	  local text = 'سوپرگروه فعال شد'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been removed'
+	  local text = 'سوپرگروه غیرفعال شد'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -114,15 +114,15 @@ end
 
 --Get and output info about supergroup
 local function callback_info(cb_extra, success, result)
-local title ="Info for SuperGroup: ["..result.title.."]\n\n"
-local admin_num = "Admin count: "..result.admins_count.."\n"
-local user_num = "User count: "..result.participants_count.."\n"
-local kicked_num = "Kicked user count: "..result.kicked_count.."\n"
-local channel_id = "ID: "..result.peer_id.."\n"
+local title ="📝مشخصات سوپرگروه: ["..result.title.."]\n\n"
+local admin_num = "👥تعدادادمین: "..result.admins_count.."\n"
+local user_num = "👥تعدادیوزرنیم: "..result.participants_count.."\n"
+local kicked_num = "👥تعدادافرادحذف شده: "..result.kicked_count.."\n"
+local channel_id = "👥ایدی: "..result.peer_id.."\n"
 if result.username then
 	channel_username = "Username: @"..result.username
 else
-	channel_username = ""
+	channel_username = "@Part_Team"
 end
 local text = title..admin_num..user_num..kicked_num..channel_id..channel_username
     send_large_msg(cb_extra.receiver, text)
@@ -565,7 +565,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "تنظیمات سوپر گروه💚\nقفل لینک: "..settings.lock_link.."\n قفل  پیام های پشت سرم🔧  :"..settings.flood.."\nتعداد مجاز پیام های پشت سر هم🔧 :"..NUM_MSG_MAX.."\nقفل اسپم پیام های طولانی🔧 :"..settings.lock_spam.."\nقفل عربی و فارسی🔧:"..settings.lock_arabic.."\nقفل اعضا🔧 :"..settings.lock_member.."\nقفل پیام های از راست به چپ🔧 :"..settings.lock_rtl.."\nپاک کننده پیام های جوین و لفت 🔧 :"..settings.lock_tgservice.."\nقفل استیکر 🔧 :"..settings.lock_sticker.."\nهمگانی بودن گروه 🔧 :"..settings.public.."\nوضعیت امنیت بالا 🔧 :"..settings.strict
+  local text = "تنظیمات سوپر گروه\n🔧قفل لینک:["..settings.lock_link.."]\n🔧قفل  پیام های پشت سرم:["..settings.flood.."]\n🔧تعداد مجاز پیام های پشت سر هم:["..NUM_MSG_MAX.."]\n🔧قفل اسپم پیام های طولانی:["..settings.lock_spam.."]\n🔧قفل عربی و فارسی:["..settings.lock_arabic.."]\n🔧قفل اعضا:["..settings.lock_member.."]\n🔧قفل پیام های از راست به چپ:["..settings.lock_rtl.."]\nپاک کننده پیام های جوین و لفت 🔧 :["..settings.lock_tgservice.."]\nقفل استیکر 🔧 :["..settings.lock_sticker.."]\n🔧همگانی بودن گروه:["..settings.public.."]\n🔧وضعیت امنیت بالا:["..settings.strict..]\n\n@part_Team
   return text
 end
 
@@ -1121,7 +1121,7 @@ local function run(msg, matches)
 	local print_name = user_print_name(msg.from):gsub("‮", "")
 	local name_log = print_name:gsub("_", " ")
 	local data = load_data(_config.moderation.data)
-		if matches[1] == 'افزودن' and not matches[2] then
+		if matches[1] == 'فعال' and not matches[2] then
 			if not is_admin1(msg) and not is_support(support_id) then
 				return
 			end
@@ -1268,7 +1268,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "SuperGroup ID for " ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n"..msg.to.id
+				return "✏نام سوپرگروه:" ..string.gsub(msg.to.print_name, "_", " ").. ":\n👥ایدی سوپرگروه:"..msg.to.id.."\n👤ایدی کاربری:"..msg.from.id.."\n👤نام شما:"..msg.from.first_name.."\n👤یوزرنیم:"..msg.from.username
 			end
 		end
 
@@ -1319,7 +1319,7 @@ local function run(msg, matches)
 				return "Create a link using /newlink first!\n\nOr if I am not creator use /setlink to set your link"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "Group link:\n"..group_link
+			return "👥نام گروه:[" ..string.gsub(msg.to.print_name, "_", " ").. "]👥لینک گروه\n"..group_link
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
@@ -1964,7 +1964,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'راهنما' and not is_owner(msg) then
-			text = "دستور راهنما فقط برای ادمین کار میکند : \n ادمین : \n @negative_officiall"
+			text = "برای شما مجاز نیست"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'راهنما' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
@@ -2031,7 +2031,7 @@ end
 
 return {
   patterns = {
-	"^(افزودن)$",
+	"^(فعال)$",
 	"^(حذف کردن)$",
 	"^[#!/]([Mm]ove) (.*)$",
 	"^(اینفو)$",
